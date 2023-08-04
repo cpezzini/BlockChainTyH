@@ -49,7 +49,7 @@ class Nodo {
             this.broadcast(this._bloqueCerrado, this._hashBloquePrev);
             this.agregarBlockchain(this._bloqueCerrado, this._hashBloquePrev);
             this.agregarBloque();
-          }
+        }
     }
     devolverBloque(){
         return this._bloqueAbierto;
@@ -60,9 +60,7 @@ class Nodo {
     agregarNodo(nodo){
         this._nodos.push(nodo);
     }
-   
 }
-
 module.exports = Nodo;
 
 

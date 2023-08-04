@@ -1,7 +1,6 @@
-  class HashStrategy {
-    calculateHash(data) {
-      throw new Error('calculateHash debe ser implementado por las clases hijas');
-    }
+class HashStrategy {
+  calculateHash(data) {
+    throw new Error('calculateHash debe ser implementado por las clases hijas');
   }
-  
-  module.exports = HashStrategy;
+}
+module.exports = HashStrategy;

@@ -21,13 +21,10 @@ class Bloque {
             hashBloquePrev: this.hashBloquePrev,
             transaccionesHashes: transaccionesHashes
         });
-    
         this._hash = this._hashStrategy.calculateHash(data); // Utiliza el hashStrategy recibido en el constructor
-        
         return this._hash;
     }
-
-     
+ 
     addCoinbase(coinbase) {
         if (this._transacciones.length === 0) {
             if(coinbase.validate()){
@@ -35,20 +32,19 @@ class Bloque {
             }
            else{
                 throw new Error('Hash de coinbase erroneo');
-            }
-                
+            }   
         } else {
             throw new Error('Ya cuenta con una coinbase');
         }
     }
     addTransaccion(transaccion) {
         if (this._transacciones.length === 0) throw new Error('Primero debe agregar una coinbase');
-            if(transaccion.validate()){
-                this._transacciones.push(transaccion);
-            }
-           else{
-                throw new Error('El hash de la transaccion es erroneo');
-            }
+        if(transaccion.validate()){
+            this._transacciones.push(transaccion);
+        }
+        else{
+            throw new Error('El hash de la transaccion es erroneo');
+        }
     }
     cantTransacciones(){
         return this._transacciones.length;

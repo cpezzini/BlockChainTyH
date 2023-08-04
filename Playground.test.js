@@ -212,9 +212,7 @@ describe('Pruebas Blockchain', () => {
         
         expect(() => nodo1.agregarTransaccion(transaccion9)).toThrow(Error);
         });
-
-      
-          
+  
   });
   describe('Token', () => {
     test('Token - Obtener Token', () => {
@@ -310,7 +308,7 @@ describe('Pruebas Blockchain', () => {
      xtrc3.agregarTransaccionHija(xtrs7,'3');
     
      expect(() => xtrc2.agregarTransaccionHija(xtrc3,'3')).toThrow(Error);
-     
+   
    });
 
 

@@ -7,7 +7,6 @@ class SHA256HashStrategy extends HashStrategy {
     return hash;
   }
 }
-
 module.exports = SHA256HashStrategy;
 
 

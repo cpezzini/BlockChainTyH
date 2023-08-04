@@ -19,14 +19,12 @@ class Coinbase {
     incorporarToken(token) {
         this._tkn = token;
     }
-
     agregarHash() {
         const data = JSON.stringify({
             id: this._id,
             tkn: this._tkn,
             out: this._out
         });
-
         this._hash = this._hashStrategy.calculateHash(data); // Utilizamos el hashStrategy recibido en el constructor
     }
     devolverTkn() {
@@ -51,5 +49,4 @@ class Coinbase {
             return true;
     }
 }
-
 module.exports = Coinbase;
