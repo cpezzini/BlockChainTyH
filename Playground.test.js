@@ -23,20 +23,6 @@ describe('Pruebas Blockchain', () => {
 
   
   describe('Nodo', () => {
-   /* test('Nodo - Agregar coinbase y una transacción y verificar contidad de transacciones', () => {
-      let blockchain = [];
-      let nodos = [];
-      let nodo1 = new Nodo(nodos, tipoHash, blockchain);
-      nodos.forEach((nodo) => { 
-        nodo.agregarNodo(nodo1);
-      });
-      nodos.push(nodo1);
-      const coinbase = new Coinbase('id1', 'direccion1', hashStrategy);
-      nodo1.agregarCoinbase(coinbase);
-      const transaccion1 = new TransaccionSimple('id2', coinbase, 'direccion2', hashStrategy);
-      nodo1.agregarTransaccion(transaccion1);
-      expect(nodo1._bloqueAbierto.cantTransacciones()).toBe(2);
-    });*/
 
     test('Nodo - Cierre de bloque', () => {
       const tipoHash = "MD5";
@@ -73,12 +59,8 @@ describe('Pruebas Blockchain', () => {
       nodo1.agregarTransaccion(transaccion8);
       const transaccion9 = new TransaccionSimple('id10', transaccion8, 'direccion10', hashStrategy);
       nodo1.agregarTransaccion(transaccion9);
-      //expect(nodo1._blck.length).toBe(1);
-      //expect(nodos.length).toBe(3);
       blockchain.push(nodo1.devolverBloqueCerrado());
-///////////////////
-     //expect(blockchain.length).toBe(1);
-    });
+     });
     
     test('Nodo - Agregar más de 10 transacciones (forzar error)', () => {
       const tipoHash = "MD5";
@@ -225,7 +207,6 @@ describe('Pruebas Blockchain', () => {
         const transaccion8 = new TransaccionSimple('id9', transaccion7, 'direccion9', hashStrategy);
         nodo1.agregarTransaccion(transaccion8);
         const transaccion9 = new TransaccionSimple('id10', transaccion8, 'direccion10', hashStrategy);
-      
         // Cambiamos manualmente el hash de la última transacción a un valor incorrecto
         transaccion9._hash = 'hash_erroneo';
         
@@ -256,7 +237,7 @@ describe('Pruebas Blockchain', () => {
      var xcoinbase3 = new Coinbase('id3', 'direccion3', xhashStrategy);
      xnodo1.agregarCoinbase(xcoinbase3);
      const xtrs1 = new TransaccionSimple('id4', xcoinbase3, 'direccion4', xhashStrategy);
-     xnodo1.agregarTransaccion(xtrs1);
+     xnodo1.agregarTransaccion(xtrs1); 
      var xtrc1 = new TransaccionCompuesta(hashStrategy);
      const xtrs2 = new TransaccionSimple('id5', xtrs1, 'direccion5', xhashStrategy);
      xtrc1.agregarTransaccionHija(xtrs2,'2');
@@ -267,41 +248,8 @@ describe('Pruebas Blockchain', () => {
      const xtrs5 = new TransaccionSimple('id8', xtrs4, 'direccion8', xhashStrategy);
      
      expect(() => xtrc1.agregarTransaccionHija(xtrs5, '2')).toThrow(Error);
-    // xnodo1.agregarTransaccion(xtrc1);
    });
 
-
-   test('Transaccion Compuesta completa - 2 niveles de compuesta ', () => {
-    var xhashStrategy = tipoHash === "SHA256" ? new SHA256HashStrategy() : new MD5HashStrategy();
-    let blockchain = [];
-    let xnodos = [];
-    let xnodo1 = new Nodo(xnodos, tipoHash, blockchain);
-    xnodos.forEach((nodo) => { 
-      nodo.agregarNodo(xnodo1);
-    });
-    xnodos.push(xnodo1);
-     var xcoinbase3 = new Coinbase('id3', 'direccion3', xhashStrategy);
-     xnodo1.agregarCoinbase(xcoinbase3);
-     const xtrs1 = new TransaccionSimple('id4', xcoinbase3, 'direccion4', xhashStrategy);
-     xnodo1.agregarTransaccion(xtrs1);
-     var xtrc1 = new TransaccionCompuesta(hashStrategy);
-     const xtrs2 = new TransaccionSimple('id5', xtrs1, 'direccion5', xhashStrategy);
-     xtrc1.agregarTransaccionHija(xtrs2,'2');
-     const xtrs3 = new TransaccionSimple('id6', xtrs2, 'direccion6', xhashStrategy);
-     xtrc1.agregarTransaccionHija(xtrs3,'2');
-     var xtrc2 = new TransaccionCompuesta(hashStrategy);
-     const xtrs4 = new TransaccionSimple('id7', xtrs3, 'direccion7', xhashStrategy);
-     xtrc2.agregarTransaccionHija(xtrs4,'2');
-     const xtrs5 = new TransaccionSimple('id8', xtrs4, 'direccion8', xhashStrategy);
-     xtrc2.agregarTransaccionHija(xtrs5,'2');
-     const xtrs6 = new TransaccionSimple('id8', xtrs5, 'direccion9', xhashStrategy);
-     xtrc2.agregarTransaccionHija(xtrs6,'2');
-     //expect(() => xtrc1.agregarTransaccionHija(xtrs5, '2')).toThrow(Error);
-     xnodo1.agregarTransaccion(xtrc2);
-   });
-
-
-   
    test('Transaccion Compuesta completa - 2 niveles de compuesta ', () => {
     var xhashStrategy = tipoHash === "SHA256" ? new SHA256HashStrategy() : new MD5HashStrategy();
     let blockchain = [];
@@ -327,12 +275,10 @@ describe('Pruebas Blockchain', () => {
      xtrc2.agregarTransaccionHija(xtrs5,'3');
      xtrc1.agregarTransaccionHija(xtrc2,'2');
      xnodo1.agregarTransaccion(xtrc1,'1');
-
-
    });
 
 
-   test('Transaccion Compuesta completa - 3 niveles de compuesta (Forzar error)', () => {
+   test('Transaccion Compuesta completa - 3 niveles de altura de compuesta (Forzar error)', () => {
     var xhashStrategy = tipoHash === "SHA256" ? new SHA256HashStrategy() : new MD5HashStrategy();
     let blockchain = [];
     let xnodos = [];
@@ -365,9 +311,6 @@ describe('Pruebas Blockchain', () => {
     
      expect(() => xtrc2.agregarTransaccionHija(xtrc3,'3')).toThrow(Error);
      
-     xtrc1.agregarTransaccionHija(xtrc2,'2');
-     xnodo1.agregarTransaccion(xtrc1,'1');
-
    });
 
 

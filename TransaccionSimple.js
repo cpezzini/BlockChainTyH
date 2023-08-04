@@ -23,17 +23,6 @@ class TransaccionSimple extends Transaccion {
 
         this._hash = hashStrategy.calculateHash(data);
     }
-   /* validate() {
-      const data = JSON.stringify({
-          id: this._id,
-          IN: this._IN,
-          out: this._out
-      });
-
-      let hash = this.hashStrategy.calculateHash(data);
-      return hash;
-  }
-    */
       devolverIdAnt(txAnt) {
         return txAnt._id;
       }
@@ -49,10 +38,6 @@ class TransaccionSimple extends Transaccion {
       devolverHash() {
         return this._hash;
       }
-     /* devolverTipoTransaccion(){
-        return this._tipoTransaccion;
-      }*/
-     
       validate() {
         const data = JSON.stringify({
             id: this.devolverId(),

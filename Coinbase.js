@@ -29,18 +29,6 @@ class Coinbase {
 
         this._hash = this._hashStrategy.calculateHash(data); // Utilizamos el hashStrategy recibido en el constructor
     }
-    /*
-    validate(){
-        const data = JSON.stringify({
-            id: this._id,
-            tkn: this._tkn,
-            out: this._out
-        });
-
-         let hash = this._hashStrategy.calculateHash(data); // Utilizamos el hashStrategy recibido en el constructor
-        return hash;
-    }*/
-
     devolverTkn() {
         return this._tkn;
     }
@@ -59,7 +47,6 @@ class Coinbase {
             tkn: this.devolverTkn(),
             out: this.devolverOut()
         });
-
         if(this.devolverHash() == this._hashStrategy.calculateHash(data)) 
             return true;
     }

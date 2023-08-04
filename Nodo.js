@@ -40,12 +40,6 @@ class Nodo {
     broadcast(bc,hbp) {
         this._nodos.forEach((nodo) => { 
             nodo.agregarBlockchain(this._bloqueCerrado, this._hashBloquePrev);
-        //this._nodos.map(function(_nodos,bc,hbp){ 
-          // if(nodo.validarHash(bc)){
-           // _nodos._blck.push(bc);
-           // _nodos._hashBloquePrev =  hbp;
-           //}
-           
         });
     }
     bloqueLleno(){

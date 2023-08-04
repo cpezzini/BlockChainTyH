@@ -20,7 +20,6 @@ const Transaccion = require('./Transaccion');
         if (this.cantidadTransacciones() === 3) {
           throw new Error('Transacción compuesta completa');
         }
-       // if(this.validarHashTransaccion(trs) == trs.devolverHash()){
         if(trs.validate()){
           this._transaccionCompuesta.push(trs);
         }
@@ -31,18 +30,6 @@ const Transaccion = require('./Transaccion');
       cantidadTransacciones() {
         return this._transaccionCompuesta.length;
       }
-     /* validarHashTransaccion(trs) {
-        const data = JSON.stringify({
-            id: trs.devolverId(),
-            IN: trs.devolverIn(),
-            out: trs.devolverOut()
-        });
-        var hashTransaccion = this._hashStrategy.calculateHash(data);
-        return hashTransaccion;
-      }   */
-     /* devolverTipoTransaccion(){
-        return this._tipoTransaccion;
-      }*/
       validate(){
         this._transaccionCompuesta.forEach((transaccion) => { 
           transaccion.validate();
@@ -51,6 +38,5 @@ const Transaccion = require('./Transaccion');
         return true;
       }
     }
-      
       module.exports = TransaccionCompuesta;
   

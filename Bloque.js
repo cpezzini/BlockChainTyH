@@ -30,7 +30,6 @@ class Bloque {
      
     addCoinbase(coinbase) {
         if (this._transacciones.length === 0) {
-           // if(this.validarHashCoinbase(coinbase) == coinbase.devolverHash()){
             if(coinbase.validate()){
                 this._transacciones.push(coinbase);
             }
@@ -44,18 +43,12 @@ class Bloque {
     }
     addTransaccion(transaccion) {
         if (this._transacciones.length === 0) throw new Error('Primero debe agregar una coinbase');
-        //if(transaccion.devolverTipoTransaccion() == 'trs'){
-        //    if(this.validarHashTransaccion(transaccion) == transaccion.devolverHash()){
             if(transaccion.validate()){
                 this._transacciones.push(transaccion);
             }
            else{
                 throw new Error('El hash de la transaccion es erroneo');
             }
-             /*   }else{
-            this._transacciones.push(transaccion);
-        }*/
-   
     }
     cantTransacciones(){
         return this._transacciones.length;
@@ -63,26 +56,6 @@ class Bloque {
     devolverTimestamp(){
         return this._timestamp;
     }
-    /*validarHashCoinbase(coinbase) {
-        const data = JSON.stringify({
-            id: coinbase.devolverId(),
-            tkn: coinbase.devolverTkn(),
-            out: coinbase.devolverOut()
-        });
-
-        var hashCoinbase = this._hashStrategy.calculateHash(data); 
-        return hashCoinbase;
-    }*/
-    /*validarHashTransaccion(transaccion) {
-        const data = JSON.stringify({
-            id: transaccion.devolverId(),
-            IN: transaccion.devolverIn(),
-            out: transaccion.devolverOut()
-        });
-
-        var hashTransaccion = this._hashStrategy.calculateHash(data);
-        return hashTransaccion;
-    }*/
 }
 module.exports = Bloque;
 
