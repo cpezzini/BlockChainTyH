@@ -1,0 +1,19 @@
+{
+  "name": "blockchain",
+  "version": "1.0.0",
+  "description": "Trabajo práctico TyH",
+  "main": "Nodo.js",
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
+  "author": "Marcela - Cecilia",
+  "license": "ISC",
+  "dependencies": {
+    "jshashes": "^1.0.8",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.6.1"
+  }
+}
