@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1691115191444" clover="3.2.0">
-  <project timestamp="1691115191444" name="All files">
+<coverage generated="1691115568625" clover="3.2.0">
+  <project timestamp="1691115568626" name="All files">
     <metrics statements="145" coveredstatements="145" conditionals="24" coveredconditionals="24" methods="49" coveredmethods="48" elements="218" coveredelements="217" complexity="0" loc="145" ncloc="145" packages="1" files="10" classes="10"/>
     <file name="Bloque.js" path="C:\Users\Marcela\Downloads\git\BlockChainTyH\Bloque.js">
       <metrics statements="27" coveredstatements="27" conditionals="8" coveredconditionals="8" methods="7" coveredmethods="7"/>
